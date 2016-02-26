@@ -36,7 +36,6 @@ public class MainController extends AppCompatActivity {
     private final Handler mHideHandler = new Handler();
     private View mContentView;
 
-    SeekBar skbLeft, skbRight;
 
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
@@ -87,52 +86,15 @@ public class MainController extends AppCompatActivity {
         BluetoothDevice d = mBluetoothAdapter.getRemoteDevice(getIntent().getStringExtra("address"));
         myConnection = new BluetoothInterface(d);
 
-        skbLeft = (SeekBar)findViewById(R.id.skbLeft);
-        skbRight = (SeekBar)findViewById(R.id.skbRight);
-        skbLeft.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+    }
 
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                byte[] OutputBuffer = new byte[5];
-                OutputBuffer[0] = (byte)0xAA;
-                OutputBuffer[1] = (byte) (seekBar.getProgress()-100);
-                OutputBuffer[3] = 0;
-                OutputBuffer[4] = (byte)0x55;
-                myConnection.write(OutputBuffer);
-            }
-        });
-
-        skbRight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                byte[] OutputBuffer = new byte[5];
-                OutputBuffer[0] = (byte)0xAA;
-                OutputBuffer[1] = (byte) (seekBar.getProgress()-100);
-                OutputBuffer[3] = 1;
-                OutputBuffer[4] = (byte)0x55;
-                myConnection.write(OutputBuffer);
-            }
-        });
+    private void SetMotorSpeed(int motorNumber, int Speed){
+        byte[] OutputBuffer = new byte[5];
+        OutputBuffer[0] = (byte)0xAA;
+        OutputBuffer[1] = (byte) Speed;
+        OutputBuffer[3] = (byte)motorNumber;
+        OutputBuffer[4] = (byte)0x55;
+        myConnection.write(OutputBuffer);
     }
 
     @Override

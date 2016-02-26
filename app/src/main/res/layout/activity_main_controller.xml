@@ -19,22 +19,4 @@
         android:textSize="50sp"
         android:textStyle="bold" />
 
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/skbLeft"
-        android:layout_gravity="center_horizontal|top"
-        android:max="200"
-        android:progress="100"
-        android:progressTint="#00ffffff"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/skbRight"
-        android:layout_gravity="center_horizontal|bottom"
-        android:max="200"
-        android:progress="100"
-        android:progressTint="#00ffffff"/>
-
 </FrameLayout>

@@ -30,7 +30,6 @@ public class ConnectionMenu extends AppCompatActivity {
     TextView lblStatus;
     Button btnSearch;
     BluetoothAdapter mBluetoothAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +119,6 @@ public class ConnectionMenu extends AppCompatActivity {
 
 class DeviceInfo{
     public String Ime, Naslov;
-    public DeviceInfo(String Ime, String Naslov){this.Ime = ((Ime == null)?"Brez imena":((Ime.length() > 12)?Ime.substring(0, 9)+"...":Ime)); this.Naslov = Naslov;}
+    public DeviceInfo(String Ime, String Naslov){this.Ime = ((Ime == null)?"Brez imena":((Ime.length() > 20)?Ime.substring(0, 9)+"...":Ime)); this.Naslov = Naslov;}
     public String toString(){return Ime+"\n"+Naslov;}
 }
