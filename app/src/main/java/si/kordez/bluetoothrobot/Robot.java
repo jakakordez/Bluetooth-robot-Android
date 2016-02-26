@@ -16,12 +16,11 @@ public class Robot {
 
         bodyOffset = new float[16];
         Matrix.setIdentityM(bodyOffset, 0);
-        Matrix.translateM(bodyOffset, 0, 3516, 100, -2092);
-        Matrix.rotateM(bodyOffset, 0, -90, 0, 1, 0);
+        Matrix.translateM(bodyOffset, 0, 0, 0, 0);
 
         cameraOffset = new float[16];
         Matrix.setIdentityM(cameraOffset, 0);
-        Matrix.translateM(cameraOffset, 0, 0, 1, -10);
+        Matrix.translateM(cameraOffset, 0, 0, 2, -5);
     }
 
     public void Draw(GL10 gl, MeshCollection content){

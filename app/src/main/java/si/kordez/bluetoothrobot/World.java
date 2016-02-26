@@ -38,12 +38,14 @@ public class World {
     long startTime;
     float[] viewMatrix;
     MeshCollection meshCollector;
+    Ground ground;
     Robot currentRobot;
     public World(AssetManager content, GL10 gl, String path){
         meshCollector = new MeshCollection(content);
         currentRobot = new Robot("robot", meshCollector, gl);
         viewMatrix = new float[16];
         startTime = System.currentTimeMillis();
+        ground = new Ground(200, 1);
     }
 
     public void Draw(GL10 gl, float[] acc){
@@ -57,6 +59,9 @@ public class World {
         gl.glLoadIdentity();
         GLU.gluLookAt(gl, currentRobot.cameraPosition.X, currentRobot.cameraPosition.Y, currentRobot.cameraPosition.Z, pos.X, pos.Y, pos.Z, 0, 1, 0);
 
+        gl.glLoadIdentity();
+        GLU.gluLookAt(gl, currentRobot.cameraPosition.X, currentRobot.cameraPosition.Y, currentRobot.cameraPosition.Z, 0, 0, 0, 0, 1, 0);
+        ground.Draw(gl);
     }
 
     public static Vector3 ExtractTranslation(float[] m){
