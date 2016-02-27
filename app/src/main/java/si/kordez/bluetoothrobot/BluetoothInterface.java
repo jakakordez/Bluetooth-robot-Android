@@ -27,7 +27,8 @@ public class BluetoothInterface {
 
     public byte readByte()
     {
-        return myConnection.connected.readByte();
+        if(myConnection != null) return myConnection.connected.readByte();
+        return 0;
     }
 
     public void cancel(){

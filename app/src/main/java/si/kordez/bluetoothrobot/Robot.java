@@ -1,6 +1,8 @@
 package si.kordez.bluetoothrobot;
 
+import android.graphics.Point;
 import android.opengl.Matrix;
+import android.view.MotionEvent;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -16,7 +18,6 @@ public class Robot {
 
         bodyOffset = new float[16];
         Matrix.setIdentityM(bodyOffset, 0);
-        Matrix.translateM(bodyOffset, 0, 0, 0, 0);
 
         cameraOffset = new float[16];
         Matrix.setIdentityM(cameraOffset, 0);
@@ -26,6 +27,12 @@ public class Robot {
     public void Draw(GL10 gl, MeshCollection content){
         gl.glMultMatrixf(bodyOffset, 0);
         content.Draw(body, gl);
+    }
+
+    public void SetLocation(float x, float y){
+        Matrix.setIdentityM(bodyOffset, 0);
+        Matrix.translateM(bodyOffset, 0, x, 0, y);
+        Matrix.rotateM(bodyOffset, 0, -90, 0, 1, 0);
     }
 
     public void Control(){

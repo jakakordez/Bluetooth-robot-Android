@@ -22,6 +22,7 @@ public class OpenGLRenderer implements Renderer, SensorEventListener {
     float[] accData;
     SensorManager mSensorManager;
     Sensor acc;
+
     public OpenGLRenderer(AssetManager Content, SensorManager sensorManager){
         content = Content;
         accData = new float[3];
@@ -29,6 +30,12 @@ public class OpenGLRenderer implements Renderer, SensorEventListener {
         acc = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensorManager.registerListener(this, acc, SensorManager.SENSOR_DELAY_NORMAL);
     }
+
+    public void readPosition(final BluetoothInterface btConnection){
+
+    }
+
+
 
     @Override
     public void onSensorChanged(SensorEvent event) {

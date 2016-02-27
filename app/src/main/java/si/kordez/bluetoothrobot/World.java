@@ -58,9 +58,6 @@ public class World {
 
         gl.glLoadIdentity();
         GLU.gluLookAt(gl, currentRobot.cameraPosition.X, currentRobot.cameraPosition.Y, currentRobot.cameraPosition.Z, pos.X, pos.Y, pos.Z, 0, 1, 0);
-
-        gl.glLoadIdentity();
-        GLU.gluLookAt(gl, currentRobot.cameraPosition.X, currentRobot.cameraPosition.Y, currentRobot.cameraPosition.Z, 0, 0, 0, 0, 1, 0);
         ground.Draw(gl);
     }
 
